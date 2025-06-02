@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1748902009 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\clientes.cpp
+	<iostream>
+	"Clientes.h"
+
+1748899662 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\clientes.h
+
+1748903626 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\main.cpp
+	<iostream>
+	"Clientes.h"
+	"Servicio.h"
+	"Alquileres.h"
+
+1746404384 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\clientes.h
+	<string>
+
+1746473851 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\menuclientes.cpp
+	<iostream>
+	"MenuClientes.h"
+
+1746414423 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\menuclientes.h
+
+1748899628 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\servicio.cpp
+	<iostream>
+	"Servicio.h"
+
+1748899628 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\servicio.h
+
+1748903647 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\alquileres.cpp
+	<iostream>
+	"Alquileres.h"
+
+1748903721 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\alquileres.h
+

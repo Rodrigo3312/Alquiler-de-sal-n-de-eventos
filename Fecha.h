@@ -20,12 +20,12 @@ public:
         else this->dia=0;  /// si el valor es invalido , guarda un 0 como señal de error.
     }
 
-    void setMes(const int m)
+    void setMes(const int m)   ///validar aun
     {
         mes=m;
     }
 
-    void setAnio(int a)
+    void setAnio(int a) ///validar aun
     {
         anio=a;
     }

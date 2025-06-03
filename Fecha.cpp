@@ -2,7 +2,7 @@
 #include "Fecha.h"
 using namespace std;
 
-void Fecha::Cargar(){
+void Fecha::cargarFecha(){
             int d;
             cout<<"DIA ";
             cin>>d;
@@ -13,7 +13,7 @@ void Fecha::Cargar(){
             cin>>anio;
 }
 
-void Fecha::Mostrar(){
+void Fecha::mostrarFecha(){
              cout<<dia<<"/"<<mes<<"/"<<anio<<endl;
 }
 

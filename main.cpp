@@ -2,6 +2,7 @@
 #include "Clientes.h"
 #include "Servicio.h"
 #include "Alquileres.h"
+#include "Fecha.h"
 
 using namespace std;
 

@@ -36,10 +36,10 @@
 		<Unit filename="Alquileres.h" />
 		<Unit filename="Clientes.cpp" />
 		<Unit filename="Clientes.h" />
+		<Unit filename="Fecha.cpp" />
+		<Unit filename="Fecha.h" />
 		<Unit filename="Servicio.cpp" />
 		<Unit filename="Servicio.h" />
-		<Unit filename="ServiciosPoralquiler.cpp" />
-		<Unit filename="ServiciosPoralquiler.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

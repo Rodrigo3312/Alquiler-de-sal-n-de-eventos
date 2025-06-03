@@ -5,11 +5,12 @@
 
 1748899662 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\clientes.h
 
-1748903626 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\main.cpp
+1748908023 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\main.cpp
 	<iostream>
 	"Clientes.h"
 	"Servicio.h"
 	"Alquileres.h"
+	"Fecha.h"
 
 1746404384 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\clientes.h
 	<string>
@@ -26,9 +27,19 @@
 
 1748899628 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\servicio.h
 
-1748903647 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\alquileres.cpp
+1748909104 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\alquileres.cpp
 	<iostream>
 	"Alquileres.h"
+	"Fecha.h"
 
-1748903721 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\alquileres.h
+1748908637 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\alquileres.h
+	"Fecha.h"
+
+1748905058 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\serviciosporalquiler.cpp
+
+1748909031 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1748908023 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\fecha.h
 

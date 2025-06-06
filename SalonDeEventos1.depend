@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1748902009 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\clientes.cpp
+1749146349 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\clientes.cpp
 	<iostream>
 	"Clientes.h"
 
-1748899662 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\clientes.h
+1749146441 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\clientes.h
+	"Fecha.h"
 
 1748908023 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\main.cpp
 	<iostream>
@@ -27,19 +28,77 @@
 
 1748899628 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\servicio.h
 
-1748909104 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\alquileres.cpp
+1749146412 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\alquileres.cpp
 	<iostream>
 	"Alquileres.h"
 	"Fecha.h"
+	"Clientes.h"
 
-1748908637 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\alquileres.h
+1749146869 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\alquileres.h
 	"Fecha.h"
+	"Clientes.h"
 
-1748905058 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\serviciosporalquiler.cpp
+1749146953 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\serviciosporalquiler.cpp
+	<iostream>
+	"Fecha.h"
+	"Alquileres.h"
+	"Clientes.h"
+	"Servicio.h"
+	"ServiciosPoralquiler.h"
 
 1748909031 source:c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\fecha.cpp
 	<iostream>
 	"Fecha.h"
 
-1748908023 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\fecha.h
+1749149075 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\fecha.h
+
+1749146965 c:\users\rodrigo\onedrive\documentos\2025 clases\actividades2025\salondeeventos1\serviciosporalquiler.h
+
+1749155394 source:c:\users\rodrigo\desktop\salondeeventos1\alquileres.cpp
+	<iostream>
+	"Alquileres.h"
+	"Fecha.h"
+	"Clientes.h"
+
+1749155394 c:\users\rodrigo\desktop\salondeeventos1\alquileres.h
+	"Fecha.h"
+	"Clientes.h"
+
+1749150925 c:\users\rodrigo\desktop\salondeeventos1\fecha.h
+
+1749163799 c:\users\rodrigo\desktop\salondeeventos1\clientes.h
+	"Fecha.h"
+
+1749163465 source:c:\users\rodrigo\desktop\salondeeventos1\clientes.cpp
+	<iostream>
+	"Clientes.h"
+	<cstring>
+
+1749155394 source:c:\users\rodrigo\desktop\salondeeventos1\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1749165734 source:c:\users\rodrigo\desktop\salondeeventos1\main.cpp
+	<iostream>
+	"Clientes.h"
+	"Servicio.h"
+	"Alquileres.h"
+	"Fecha.h"
+
+1749165692 c:\users\rodrigo\desktop\salondeeventos1\servicio.h
+
+1749166217 source:c:\users\rodrigo\desktop\salondeeventos1\servicio.cpp
+	<iostream>
+	<cstring>
+	"Servicio.h"
+
+1749162109 source:c:\users\rodrigo\desktop\salondeeventos1\serviciosporalquiler.cpp
+	<iostream>
+	"Fecha.h"
+	"Alquileres.h"
+	"Clientes.h"
+	"Servicio.h"
+	"ServiciosPorAlquiler.h"
+
+1749158776 c:\users\rodrigo\desktop\salondeeventos1\serviciosporalquiler.h
 

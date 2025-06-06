@@ -12,6 +12,14 @@ public:
     void cargarServicio();
     void mostrarServicio();
 
+
+
+    int getIdServicio()const;
+    void setIdServicio(int id);
+
+
+
+
 };
 
 #endif // SERVICIO_H_INCLUDED

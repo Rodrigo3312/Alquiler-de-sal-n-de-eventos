@@ -11,41 +11,16 @@ public:
     void cargarFecha();
     void mostrarFecha();             ///poner un void dentro solo es una manera de saber que no recibe objetos externos solo internos ,dia,mes y anio.
 
-                                      ///setter
-    void setDia(int dia)
-    {
-        if(dia>=1 &&dia<=31)          /// verifica que el valor este en un rango valido para un dia
-            this->dia=dia;           /// asigna el valor al atributo dia del objeto
-                                       ///this refiere al atributo
+        // Setters
+    void setDia(int d);
+    void setMes(int m);
+    void setAnio(int a);
 
-        else this->dia=0;             /// si el valor es invalido , guarda un 0 como señal de error.
-    }
+    // Getters
+    int getDia() ;
+    int getMes() ;
+    int getAnio() ;
 
-
-
-
-    void setMes(const int m)             ///validar aun
-    {
-        mes=m;
-    }
-
-    void setAnio(int a)                  ///validar aun
-    {
-        anio=a;
-    }
-                                         ///getter
-    int getDia()
-    {
-        return dia;
-    }
-    int getMes()
-    {
-        return mes;
-    }
-    int getAnio()
-    {
-        return anio;
-    }
 };
 
 #endif // FECHA_H_INCLUDED

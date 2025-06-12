@@ -11,7 +11,7 @@ private:
     char nombre[30];
     char apellido[30];
     char email[30];
-    Fecha fechaDeNacimiento;
+    Fecha fechaDeNacimiento; ///composicion
 
 public:
     Cliente();

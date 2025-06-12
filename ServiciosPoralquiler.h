@@ -9,7 +9,7 @@ private:
 
 public:
 
-
+    void cargarRelacion();
     // Mostrar
     void mostrar() const;
 };

@@ -3,7 +3,7 @@
 #include "Servicio.h"
 #include "Alquileres.h"
 #include "Fecha.h"
-
+#include "ServiciosPoralquiler.h"
 using namespace std;
 
 int main()
@@ -14,6 +14,7 @@ int main()
     Clientes obj;
     Servicios miServicio;
     Alquileres misAlquileres;
+    ServiciosPorAlquiler misServiciosPorAlquiler;
     do
 
     {
@@ -22,10 +23,11 @@ int main()
         cout << "MENU PRINCIPAL - SISTEMA DE ALQUILERES:SALON DE EVENTOS" << endl;
         cout << "=======================================================" << endl;
         cout << "1.REGISTRAR NUEVO CLIENTE" << endl;
-        cout << "2.SERVICIOS" << endl;
-        cout << "3.ALQUILERES" << endl;
-        cout << "4.REGISTROS" << endl;
-        cout << "5.SALIR" << endl;
+        cout << "2.REGISTRAR SERVICIOS" << endl;
+        cout << "3.REGISTRAR ALQUILERES" << endl;
+        cout << "4.MOSTRAR REGISTROS" << endl; ///solo para mostrar
+        cout << "5.ASIGNAR SERVICIOS A UN ALQUILER" << endl;
+        cout << "6.SALIR" << endl;
         cout << "=======================================================" << endl;
         cout << "INGRESE UNA OPCION: " ;
         cin  >>  opcion;
@@ -36,8 +38,6 @@ int main()
         {
         case 1:
             obj.cargarClientes();
-
-
             break;
         case 2:
             miServicio.cargarServicio();
@@ -49,8 +49,14 @@ int main()
             obj.mostrarClientes();
             miServicio.mostrarServicio();
             misAlquileres.mostrarAlquileres();
+            ///archivos
+            miServicio.mostrarCantidadRegistros();
+            miServicio.listarTodosRegistros();
             break;
         case 5:
+            misServiciosPorAlquiler.cargarRelacion();
+            break;
+        case 6:
             return 0;
         default:
             cout << "OPCION INVALIDA. POR FAVOR, INTENTE DE NUEVO." << endl;

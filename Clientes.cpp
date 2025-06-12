@@ -38,6 +38,6 @@ cout << "NOMBRE: " <<nombre<<endl;
 cout << "APELLIDO: " <<apellido<<endl;
 cout << "TELEFONO: "<<telefono<<endl;
 cout << "EMAIL: " <<email<<endl;
-cout << "FECHA DE NACIMIENTO: " <<endl; fechaDeNacimiento.mostrarFecha();
+cout << "FECHA DE NACIMIENTO: " <<endl; fechaDeNacimiento.mostrarFecha(); ///composicion
 
 }

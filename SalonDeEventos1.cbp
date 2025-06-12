@@ -40,6 +40,8 @@
 		<Unit filename="Fecha.h" />
 		<Unit filename="Servicio.cpp" />
 		<Unit filename="Servicio.h" />
+		<Unit filename="ServicioArchivo.cpp" />
+		<Unit filename="ServicioArchivo.h" />
 		<Unit filename="ServiciosPoralquiler.cpp" />
 		<Unit filename="ServiciosPoralquiler.h" />
 		<Unit filename="main.cpp" />

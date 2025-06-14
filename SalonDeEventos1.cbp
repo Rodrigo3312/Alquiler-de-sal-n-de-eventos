@@ -34,6 +34,12 @@
 		</Compiler>
 		<Unit filename="Alquileres.cpp" />
 		<Unit filename="Alquileres.h" />
+		<Unit filename="AlquileresArchivo.cpp" />
+		<Unit filename="AlquileresArchivo.h" />
+		<Unit filename="ArchivoClientes.cpp" />
+		<Unit filename="ArchivoClientes.h" />
+		<Unit filename="ArchivoServiciosPorAlquiler.cpp" />
+		<Unit filename="ArchivoServiciosPorAlquiler.h" />
 		<Unit filename="Clientes.cpp" />
 		<Unit filename="Clientes.h" />
 		<Unit filename="Fecha.cpp" />

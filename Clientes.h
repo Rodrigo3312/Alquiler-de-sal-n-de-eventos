@@ -27,6 +27,8 @@ public:
     void setApellido(const char *apellido);
     void setEmail(const char *email);
 
+    bool setDni(int _dni);
+
    ///metodos
     void cargarClientes();
     void mostrarClientes();

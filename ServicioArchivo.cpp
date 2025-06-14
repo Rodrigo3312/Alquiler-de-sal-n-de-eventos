@@ -8,9 +8,12 @@ ServiciosArchivo::ServiciosArchivo(){
 _nombreArchivo = "Servicio.dat";
 
 }
+
 ServiciosArchivo::ServiciosArchivo(std::string nombreArchivo){
 _nombreArchivo = nombreArchivo;
 }
+
+
 bool ServiciosArchivo::guardar(Servicios registro){
 
 FILE *pFile; ///  puntero file
@@ -31,6 +34,8 @@ result=fwrite(&registro,sizeof (Servicios),1,pFile);   ///escribir
  fclose(pFile); ///cerrar el archivo
 return result;
 }
+
+
 
 int ServiciosArchivo::getCantidadRegistros(){
  int total,cantidad;

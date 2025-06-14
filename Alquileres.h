@@ -17,7 +17,7 @@ private:
     float _importeTotal;
 public:
     Alquileres();
-    Alquileres(int idA,int dniC,std::string nombreEV,Fecha& fechaEV,Fecha& FechaSE , int hora , int duracion ,int cantidad, float importe);
+    Alquileres(int idA,int dniC,std::string nombreEV,Fecha& fechaEV,Fecha& FechaSE, int hora, int duracion,int cantidad, float importe);
 
     void cargarAlquileres();
     void mostrarAlquileres();
@@ -33,6 +33,9 @@ public:
     int getCantidadMaxPersonas();
     float getImporteTotal();
 
+    ///Archivos
+    void mostrarCantidadAlquileres();
+    void listarTodosAlquileres();
 
     void setIdAlquiler(int idA);
     void setDniCliente(int dniC);

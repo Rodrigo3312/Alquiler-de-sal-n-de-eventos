@@ -11,7 +11,7 @@ private:
 public:
     void cargarServicio();
     void mostrarServicio();
-
+///archivos
     void mostrarCantidadRegistros();
     void listarTodosRegistros();
 

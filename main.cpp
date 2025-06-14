@@ -4,6 +4,11 @@
 #include "Alquileres.h"
 #include "Fecha.h"
 #include "ServiciosPoralquiler.h"
+
+///
+#include "ArchivoServiciosPorAlquiler.h"
+#include "ArchivoClientes.h"
+
 using namespace std;
 
 int main()
@@ -14,7 +19,10 @@ int main()
     Clientes obj;
     Servicios miServicio;
     Alquileres misAlquileres;
-    ServiciosPorAlquiler misServiciosPorAlquiler;
+    ///ServiciosPorAlquiler misServiciosPorAlquiler;
+
+    ArchivoServiciosPorAlquiler servixal;
+    ArchivoClientes archivo;
     do
 
     {
@@ -37,7 +45,8 @@ int main()
         switch(opcion)
         {
         case 1:
-            obj.cargarClientes();
+            ///obj.cargarClientes();
+              archivo.agregarCliente();
             break;
         case 2:
             miServicio.cargarServicio();
@@ -46,15 +55,27 @@ int main()
             misAlquileres.cargarAlquileres();
             break;
         case 4:
-            obj.mostrarClientes();
+            ///archivos heap
+            ///obj.mostrarClientes();
+
+
             miServicio.mostrarServicio();
             misAlquileres.mostrarAlquileres();
-            ///archivos
+            ///archivos clientes
+            archivo.listarClientes();
+            ///archivos servicios
             miServicio.mostrarCantidadRegistros();
             miServicio.listarTodosRegistros();
+            ///archivos alquileres
+            misAlquileres.mostrarCantidadAlquileres();
+            misAlquileres.listarTodosAlquileres();
+            ///archivos serviciosXalquiler
+            servixal.listarServiciosPorAlquileres();
+            ///misServiciosPorAlquiler.mostrar();
+            ///misServiciosPorAlquiler.listarServiciosPorAlquileres();
             break;
         case 5:
-            misServiciosPorAlquiler.cargarRelacion();
+            servixal.agregarServicioPorAlquiler();
             break;
         case 6:
             return 0;

@@ -2,19 +2,20 @@
 #define SERVICIOARCHIVO_H_INCLUDED
 #include "Servicio.h"
 #include <string>
-class ServiciosArchivo{
+class ServiciosArchivo
+{
 
 private:
     std::string _nombreArchivo;
 public:
 
-ServiciosArchivo();
-ServiciosArchivo(std::string nombreArchivo);
+    ServiciosArchivo();
+    ServiciosArchivo(std::string nombreArchivo);
 
-bool guardar(Servicios registro );
-void listarServicios();
- int getCantidadRegistros();
- Servicios leerServicios(int pos);
+    bool guardar(Servicios registro);
+    void listarServicios();
+    int getCantidadRegistros();
+    Servicios leerServicios(int pos);
 };
 
 #endif // SERVICIOARCHIVO_H_INCLUDED

@@ -2,6 +2,7 @@
 #include "Alquileres.h"
 #include "Fecha.h"
 #include "Clientes.h"
+#include "AlquileresArchivo.h"
 #include <string>
 #include <cstring>
 using namespace std;
@@ -34,6 +35,8 @@ Alquileres::Alquileres(int idA, int dniC, std::string nombreEV, Fecha& fechaEV, 
 ///METODOS DE CLASE ALQUILER
 void Alquileres::cargarAlquileres()
 {
+
+    AlquileresArchivo pArchivoA;
     int idA;
     int dniC;
     std::string nombreEV;
@@ -136,6 +139,17 @@ void Alquileres::cargarAlquileres()
     calcularImporteTotal();
 
     cout << "IMPORTE TOTAL CALCULADO (calculado como cantidad * horas * 500): $"<<getImporteTotal()<<endl;
+
+
+    if(pArchivoA.guardarA(*this))
+    {
+        cout << "SE GUARDO EL ALQUILER CORRECTAMENTE!" << endl;
+    }
+    else
+    {
+        cout << "HUBO UN ERROR NO SE GUARDO EL ALQUILER" <<endl;
+    }
+
 }
 
 
@@ -145,6 +159,35 @@ void Alquileres::calcularImporteTotal()
     float importe=_cantidadMaxpersonas * _horaDeDuracionEvento * precioPorPersonaPorHora;
     setImporteTotal(importe);
 }
+
+void Alquileres::mostrarCantidadAlquileres(){
+AlquileresArchivo pArchivoA;
+
+int cantidadRegistrosAlquires=pArchivoA.getCantidadRegistrosAlquileres();
+ cout << "LA CANTIDAD DE ALQUILERES QUE HAY SON: "<<cantidadRegistrosAlquires<<endl;
+
+
+}
+
+void Alquileres::listarTodosAlquileres(){
+
+
+    AlquileresArchivo pArchivoA;
+    Alquileres registro;
+    int cantidadRegistrosAlquileres = pArchivoA.getCantidadRegistrosAlquileres();
+
+    for(int i = 0; i < cantidadRegistrosAlquileres ; i++)
+    {
+
+        registro = pArchivoA.leerAlquileres(i);
+
+        registro.mostrarAlquileres();
+         cout << "=======================================================" << endl;
+    }
+
+
+}
+
 
 
 
@@ -261,7 +304,7 @@ void Alquileres::setHoraDeServicioContratado(int hora) /// valida que sea de 0 a
 
 void Alquileres::setHoraDeDuracionEvento(int duracion) ///arreglar de 3 a 6 horas
 {
-    if (duracion >= 2 && duracion <= 12)  ///verifica que no sea negativo y rango de 0 a 15
+    if (duracion >= 2 && duracion <= 12)  ///verifica que no sea negativo y rango de 2 a 12
     {
         _horaDeDuracionEvento = duracion;
     }

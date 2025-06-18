@@ -24,6 +24,8 @@ public:
 
     bool verificarDni(int dni);
 
+    int buscarClientePorDni(int dni);
+
 };
 
 #endif // ARCHIVOCLIENTES_H_INCLUDED

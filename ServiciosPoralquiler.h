@@ -16,6 +16,7 @@ public:
     int getIdAlquiler();
     float getPrecioDeServicio();
 
+
     void setIdServicio(int idServicio);
     void setIdAlquiler(int idAlquiler);
     void setPrecioDeServicios(float precioDeServicio);

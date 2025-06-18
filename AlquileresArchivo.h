@@ -15,7 +15,7 @@ public:
     void listaralquileres();
     int getCantidadRegistrosAlquileres();
     Alquileres leerAlquileres(int pos);
-
+    bool verificarIdAlquiler(int _id);
 
 
 

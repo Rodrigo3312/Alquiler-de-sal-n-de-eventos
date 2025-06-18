@@ -30,12 +30,34 @@ void validarPalabra(char datoChar[], int tamanio){
 void Clientes::cargarClientes()
 {
     int dni;
-    cout << "Ingrese DNI CLIENTES: ";
+
+
+
+while (true){
+          cout << "Ingrese DNI CLIENTES: ";
     cin >> dni;
+
+
+       /// Validar rango de 7 a 8 dígitos antes de setDni
+    if (dni < 1000000 || dni > 99999999)
+    {
+        cout << "ERROR: DNI FUERA DE RANGO (debe tener entre 7 y 8 digitos)." << endl;
+        continue; /// vuelve a pedir el DNI
+    }
+
+
     if(setDni(dni) == false){
         cout << "ESTE DNI YA ESTA REGISTRADO"<<endl;
-        return;
+        continue;
     }
+break;    /// Si pasa ambas validaciones, salgo del bucle
+}
+
+
+
+
+
+
 
     while(validarPalabraNombre == false){//sacar validar palabra y numeros
     cout << "Ingrese NOMBRE: ";
@@ -74,13 +96,20 @@ cout << "FECHA DE NACIMIENTO: " <<endl; fechaDeNacimiento.mostrarFecha();
 }
 
 bool Clientes::setDni(int _dni){
-
+{  ///agrugue validacion de rango
+    if(_dni < 1000000|| _dni > 999999999){
+        cout << "ERROR:DNI FUERA DE RANGO (debe tener 7 u 8 digitos)."<<endl;
+        return false;
+    }
+}
     ArchivoClientes obj;
 
     if(obj.verificarDni(_dni) == true){
         dniCliente = _dni;
         return true;
-    }else{
+    }else{ ///agregue este cout
+        cout << "ERROR: ESTE DNI YA ESTA REGISTRADO."<<endl;
+
     return false;
     }
 

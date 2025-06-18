@@ -29,7 +29,7 @@ int ArchivoClientes::agregarCliente(){
     Clientes obj;
     obj.cargarClientes();
     FILE *pCliente;
-    pCliente=fopen(nombre,"ab");
+    pCliente=fopen(nombre,"wb");
     if(pCliente==nullptr){
         return -1;
     }
@@ -86,3 +86,22 @@ bool ArchivoClientes::verificarDni(int dni){
     return true;
 
 }
+
+    int ArchivoClientes::buscarClientePorDni(int dni){
+    Clientes obj;
+    FILE *pClientes=fopen(nombre,"rb");
+    if (pClientes==nullptr)return -1;
+    int pos = 0;
+    while (fread (&obj,sizeof (Clientes),1,pClientes)){
+        if(obj.getDniCliente()==dni){
+
+            fclose(pClientes);
+            return pos;
+        }
+
+        pos++;
+    }
+
+    fclose(pClientes);
+    return -1;
+    }

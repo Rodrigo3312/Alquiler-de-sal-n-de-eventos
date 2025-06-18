@@ -18,7 +18,7 @@ bool ServiciosArchivo::guardar(Servicios registro){
 
 FILE *pFile; ///  puntero file
 bool result; /// si es 1 pudo escribir si es 0 no pudo.
-pFile = fopen(_nombreArchivo.c_str(),"ab");  ///abrir archivo ab para agregar "wb" para eliminar los registros
+pFile = fopen(_nombreArchivo.c_str(),"wb");  ///abrir archivo ab para agregar "wb" para eliminar los registros
 
 if(pFile == nullptr){
 

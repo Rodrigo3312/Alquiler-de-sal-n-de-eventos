@@ -7,7 +7,7 @@ int ArchivoServiciosPorAlquiler::agregarServicioPorAlquiler(){
     ServiciosPorAlquiler obj;
     obj.cargarRelacion();
     FILE *pArchivo;
-    pArchivo= fopen(nombreArchivo, "ab");
+    pArchivo= fopen(nombreArchivo, "wb");
     if(pArchivo==nullptr){
         return -1;
     }

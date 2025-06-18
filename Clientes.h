@@ -13,6 +13,7 @@ private:
     char email[30];
     Fecha fechaDeNacimiento; ///composicion
 
+
 public:
     Cliente();
     Cliente(int _dniCliente, int _telefono,const char *_nombre,const char *_apellido, const char *_email);

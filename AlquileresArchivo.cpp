@@ -20,7 +20,7 @@ bool AlquileresArchivo::guardarA(Alquileres registroA)
 
     FILE *pAlqui;
     bool result;
-    pAlqui = fopen (_nombreArchivoAlquiler.c_str(), "ab");
+    pAlqui = fopen (_nombreArchivoAlquiler.c_str(), "wb");
     if (pAlqui==nullptr)
     {
         return false;
@@ -77,3 +77,19 @@ Alquileres AlquileresArchivo::leerAlquileres(int pos)
     return leerAlquileres;
 
 }
+
+/*
+int AlquileresArchivo::verificarIdAlquiler(int _id){
+
+    Alquileres verificar;
+    FILE *pVerificar = fopen (_nombreArchivoAlquiler.c_str(),"rb");
+    if (pVerificar == nullptr)
+        return false;
+    while(fread(&))
+
+
+
+
+
+}
+*/

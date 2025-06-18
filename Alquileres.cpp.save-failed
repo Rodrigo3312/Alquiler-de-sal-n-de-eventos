@@ -2,7 +2,6 @@
 #include "Alquileres.h"
 #include "Fecha.h"
 #include "Clientes.h"
-#include "ArchivoClientes.h"
 #include "AlquileresArchivo.h"
 #include <string>
 #include <cstring>
@@ -59,27 +58,23 @@ void Alquileres::cargarAlquileres()
     }
 
 
-    ///cambie el rango por que no sirve aqui, sirve en la carga de clientes
-     ArchivoClientes archivoC;
-    while(true){
-    cout << "INGRESE DNI DEL CLIENTE: ";
+    cout << "INGRESE DNI DEL CLIENTE ENTRE 1.000.000 y 99.999.999: ";
     cin >> dniC;
+    while (dniC< 1000000 || dniC > 999999999)
+    {
 
-    if (cin.fail())
-    { cin.clear();
-    cin.ignore(10000,'\n');
-
-       cout << "ERROR: INGRESE SOLO NUMEROS." << endl;
-        continue;
+        cout << "DNI MUY CORTO REINGRESE: ";
+        cin >>dniC;
     }
 
-    if(archivoC.buscarClientePorDni(dniC) != -1)
-    {  cout << "CLIENTE ENCONTRADO Y VALIDADO CORRECTAMENTE!" << endl;
-        break ;  /// DNI valido y registrado
-        }else{cout << "ERROR: DNI NO ENCONTRADO.DEBE SER UN CLIENTE YA REGISTRADO." << endl;
+    ArchivoClientes archiC;
+    if(archiC.buscarClientePorDni(dniC) == -1)
+    {
+        cout << "ERROR: NO EXISTE UN CLIENTE CON ESE DNI NO SE PUEDE REALIZAR EL ALQUILER." << endl;
+        return;
     }
 
-    }
+
 
     cin.ignore();
     while(true)
@@ -276,10 +271,12 @@ void Alquileres::setIdAlquiler(int idA)  /// valida un rango de 3 digitos
 }
 
 
-void Alquileres::setDniCliente(int dniC)
+void Alquileres::setDniCliente(int dniC) /// 7 a 8 digitos
 {
+    if(dniC >= 1000000 && dniC <= 99999999)  ///verifica rango valido
+    {
         _dniCliente = dniC;
-
+    }
 
 }
 

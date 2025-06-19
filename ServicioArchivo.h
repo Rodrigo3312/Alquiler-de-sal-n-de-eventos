@@ -4,7 +4,6 @@
 #include <string>
 class ServiciosArchivo
 {
-
 private:
     std::string _nombreArchivo;
 public:
@@ -16,6 +15,11 @@ public:
     void listarServicios();
     int getCantidadRegistros();
     Servicios leerServicios(int pos);
+    bool verificarIdServicio(int id);
+
+
+
+    float obtenerPrecioServicio(int id);
 };
 
 #endif // SERVICIOARCHIVO_H_INCLUDED

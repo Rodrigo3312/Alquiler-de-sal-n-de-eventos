@@ -15,9 +15,9 @@ public:
     void listaralquileres();
     int getCantidadRegistrosAlquileres();
     Alquileres leerAlquileres(int pos);
-    bool verificarIdAlquiler(int _id);
-
-
+    bool verificarIdAlquiler(int id);
+    bool existeFechaReservada(const Fecha& fecha);
+bool sumarImporteAlquiler(int idAlq, float monto);
 
 
 };

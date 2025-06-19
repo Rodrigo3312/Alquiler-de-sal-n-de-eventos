@@ -9,15 +9,17 @@ private:
     int _idAlquiler;
     int _dniCliente;
     char _nombreDeEvento[50];
-    Fecha _fechaDeEvento;           /// mecanismo composicion
-    Fecha _fechaDeServicioContratado;   ///composicion
+    Fecha _fechaDeEvento;
+    Fecha _fechaDeServicioContratado;
     int  _horaDeServicioContratado;
     int  _horaDeDuracionEvento;
     int  _cantidadMaxpersonas;
     float _importeTotal;
 public:
+
     Alquileres();
     Alquileres(int idA,int dniC,std::string nombreEV,Fecha& fechaEV,Fecha& FechaSE, int hora, int duracion,int cantidad, float importe);
+
 
     void cargarAlquileres();
     void mostrarAlquileres();
@@ -33,9 +35,9 @@ public:
     int getCantidadMaxPersonas();
     float getImporteTotal();
 
-    ///Archivos
     void mostrarCantidadAlquileres();
     void listarTodosAlquileres();
+
 
     void setIdAlquiler(int idA);
     void setDniCliente(int dniC);
@@ -46,7 +48,6 @@ public:
     void setHoraDeDuracionEvento(int duracion);
     void setCantidadMaxPersonas(int cantidad);
     void setImporteTotal(float importe);
-
 
 };
 

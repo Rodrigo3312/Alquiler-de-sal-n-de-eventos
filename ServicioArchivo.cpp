@@ -4,76 +4,115 @@
 #include <iostream>
 using namespace std;
 
-ServiciosArchivo::ServiciosArchivo(){
-_nombreArchivo = "Servicio.dat";
+ServiciosArchivo::ServiciosArchivo()
+{
+    _nombreArchivo = "Servicio.dat";
 
 }
-
-ServiciosArchivo::ServiciosArchivo(std::string nombreArchivo){
-_nombreArchivo = nombreArchivo;
-}
-
-
-bool ServiciosArchivo::guardar(Servicios registro){
-
-FILE *pFile; ///  puntero file
-bool result; /// si es 1 pudo escribir si es 0 no pudo.
-pFile = fopen(_nombreArchivo.c_str(),"wb");  ///abrir archivo ab para agregar "wb" para eliminar los registros
-
-if(pFile == nullptr){
-
-    return false;
-}     ///preguntar que pfile noo sea nulo , si no pudo registrar, abrirlo como escritura retorna falso
-      /// si pasa este if , si, se abrio como escritura.
-
-result=fwrite(&registro,sizeof (Servicios),1,pFile);   ///escribir
- /// pedir la direccion de memoria &registro
- /// tamaño del registro sizeof (servicios)
- /// cantidad cuantas veces va registrar o guardar 1
- /// nombre del puntero pFile
- fclose(pFile); ///cerrar el archivo
-return result;
+ServiciosArchivo::ServiciosArchivo(std::string nombreArchivo)
+{
+    _nombreArchivo = nombreArchivo;
 }
 
 
 
-int ServiciosArchivo::getCantidadRegistros(){
- int total,cantidad;
+float ServiciosArchivo::obtenerPrecioServicio(int id) {
+    Servicios obj;
+    FILE* pPrecio = fopen(_nombreArchivo.c_str(), "rb");
+    if (pPrecio == nullptr) return 0;
 
- FILE *pFile;
+    while (fread(&obj, sizeof(Servicios), 1, pPrecio)) {
+        if (obj.getIdServicio() == id) {
+            fclose(pPrecio);
+            return obj.getPrecioDeServicio(); // supondremos que existe ese método
+        }
+    }
 
- pFile = fopen(_nombreArchivo.c_str(), "rb");
- if (pFile == nullptr){
+    fclose(pPrecio);
     return 0;
-
- }
- fseek(pFile,0,SEEK_END);
+}
 
 
 
 
- total=ftell(pFile);
- cantidad= total / sizeof (Servicios);
- fclose(pFile);
- return cantidad;
+
+bool ServiciosArchivo::guardar(Servicios registro)
+{
+
+    FILE *pFile;
+    bool result;
+    pFile = fopen(_nombreArchivo.c_str(),"ab");
+
+    if(pFile == nullptr)
+    {
+
+        return false;
+    }
+    result=fwrite(&registro,sizeof (Servicios),1,pFile);
+
+    fclose(pFile);
+    return result;
+}
+
+
+int ServiciosArchivo::getCantidadRegistros()
+{
+    int total,cantidad;
+
+    FILE *pFile;
+
+    pFile = fopen(_nombreArchivo.c_str(), "rb");
+    if (pFile == nullptr)
+    {
+        return 0;
+
+    }
+    fseek(pFile,0,SEEK_END);
+
+    total=ftell(pFile);
+    cantidad= total / sizeof (Servicios);
+    fclose(pFile);
+    return cantidad;
 
 }
 
 
-Servicios ServiciosArchivo::leerServicios(int pos) {
+Servicios ServiciosArchivo::leerServicios(int pos)
+{
 
     Servicios leer;
     FILE *pFile;
 
-   pFile = fopen(_nombreArchivo.c_str(),"rb");
-    if (pFile == nullptr) {
+    pFile = fopen(_nombreArchivo.c_str(),"rb");
+    if (pFile == nullptr)
+    {
 
         return leer;
     }
 
- fseek(pFile, pos * sizeof(Servicios), SEEK_SET);
+    fseek(pFile, pos * sizeof(Servicios), SEEK_SET);
     fread(&leer, sizeof(Servicios), 1, pFile);
     fclose(pFile);
     return leer;
+
+}
+
+bool ServiciosArchivo::verificarIdServicio(int id)
+{
+    Servicios verificarId;
+    FILE* pVerifica= fopen(_nombreArchivo.c_str(),"rb");
+
+    if(pVerifica==nullptr)return false;
+    while (fread(&verificarId,sizeof (Servicios),1,pVerifica))
+    {
+        if (verificarId.getIdServicio()== id)
+        {
+            fclose(pVerifica);
+            return true;
+        }
+    }
+    fclose(pVerifica);
+    return false;
+
 
 }

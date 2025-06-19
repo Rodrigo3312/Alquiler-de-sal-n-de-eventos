@@ -23,13 +23,12 @@ int ArchivoClientes::contarRegistros(){
     fclose(pCliente);
     return cantidadR;
 }
-
 int ArchivoClientes::agregarCliente(){
 
     Clientes obj;
     obj.cargarClientes();
     FILE *pCliente;
-    pCliente=fopen(nombre,"wb");
+    pCliente=fopen(nombre,"ab");
     if(pCliente==nullptr){
         return -1;
     }
@@ -47,7 +46,7 @@ bool ArchivoClientes::listarClientes(){
     FILE *pClientes;
     pClientes=fopen(nombre,"rb");
 
-    if(pClientes==nullptr){  ///NULL
+    if(pClientes==nullptr){
      std::cout<<"ERROR DE ARCHIVO"<<std::endl;
         return false;
     }
@@ -68,7 +67,7 @@ bool ArchivoClientes::verificarDni(int dni){
     FILE *pClientes;
     pClientes=fopen(nombre,"rb");
 
-    if(pClientes==nullptr){  ///NULL
+    if(pClientes==nullptr){
      std::cout<<"ERROR DE ARCHIVO"<<std::endl;
         return false;
     }

@@ -33,8 +33,6 @@ bool AlquileresArchivo::guardarA(Alquileres registroA)
 }
 
 
-
-
 int AlquileresArchivo::getCantidadRegistrosAlquileres()
 {
 
@@ -58,7 +56,6 @@ int AlquileresArchivo::getCantidadRegistrosAlquileres()
 }
 
 
-
 Alquileres AlquileresArchivo::leerAlquileres(int pos)
 {
 
@@ -78,18 +75,87 @@ Alquileres AlquileresArchivo::leerAlquileres(int pos)
 
 }
 
-/*
-int AlquileresArchivo::verificarIdAlquiler(int _id){
+
+bool AlquileresArchivo::verificarIdAlquiler(int id){
 
     Alquileres verificar;
     FILE *pVerificar = fopen (_nombreArchivoAlquiler.c_str(),"rb");
     if (pVerificar == nullptr)
         return false;
-    while(fread(&))
+    while(fread(&verificar,sizeof (Alquileres),1,pVerificar)){
+
+        if (verificar.getIdAlquiler()==id){
+
+            fclose(pVerificar);
+            return true;
+        }
+
+    }
 
 
-
+fclose(pVerificar);
+return false;
 
 
 }
-*/
+
+
+bool AlquileresArchivo::sumarImporteAlquiler(int idAlq, float monto) {
+    Alquileres obj;
+    FILE* pSuma = fopen(_nombreArchivoAlquiler.c_str(), "rb+");
+    if (pSuma == nullptr)
+        return false;
+
+    int pos = 0;
+
+    while (fread(&obj, sizeof(Alquileres), 1, pSuma)) {
+        if (obj.getIdAlquiler() == idAlq) {
+            obj.setImporteTotal(obj.getImporteTotal() + monto);
+            fseek(pSuma, sizeof(Alquileres) * pos, SEEK_SET);
+            fwrite(&obj, sizeof(Alquileres), 1, pSuma);
+            fclose(pSuma);
+            return true;
+        }
+        pos++;
+    }
+    fclose(pSuma);
+    return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bool AlquileresArchivo::existeFechaReservada(const Fecha& fecha){
+Alquileres reservada;
+
+FILE *pReservada=fopen(_nombreArchivoAlquiler.c_str(),"rb");
+
+if (pReservada==nullptr) return false;
+
+while (fread(&reservada,sizeof(Alquileres),1,pReservada)){
+
+    if (reservada.getFechaDeEvento().esIgual(fecha)){
+
+        fclose(pReservada);
+        return true;
+    }
+
+}
+
+fclose(pReservada);
+return false;
+
+}

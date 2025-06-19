@@ -6,21 +6,23 @@
 #include "AlquileresArchivo.h"
 #include <string>
 #include <cstring>
+
 using namespace std;
-///CONSTRUCTOR POR DEFECTO
+
+
 Alquileres::Alquileres()
 {
     _idAlquiler = 0;
     _dniCliente = 0;
     strcpy(_nombreDeEvento,"");
-    _fechaDeEvento = Fecha();   /// evitar valores basura si otra funcion los llega a usar antes
-    _fechaDeServicioContratado = Fecha();///
+    _fechaDeEvento = Fecha();
+    _fechaDeServicioContratado = Fecha();
     _horaDeServicioContratado = 0;
     _horaDeDuracionEvento = 0;
     _cantidadMaxpersonas = 0;
-    _importeTotal = 0.0f;
+    _importeTotal = 0;
 }
-///CONSTRUCTOR CON PARAMETROS
+
 Alquileres::Alquileres(int idA, int dniC, std::string nombreEV, Fecha& fechaEV, Fecha& fechaSE, int hora, int duracion, int cantidad, float importe)
 {
     setIdAlquiler(idA);
@@ -33,11 +35,12 @@ Alquileres::Alquileres(int idA, int dniC, std::string nombreEV, Fecha& fechaEV, 
     setCantidadMaxPersonas(cantidad);
     setImporteTotal(importe);
 }
-///METODOS DE CLASE ALQUILER
+
 void Alquileres::cargarAlquileres()
 {
 
     AlquileresArchivo pArchivoA;
+
     int idA;
     int dniC;
     std::string nombreEV;
@@ -46,91 +49,117 @@ void Alquileres::cargarAlquileres()
     int hora;
     int duracion ;
     int cantidad;
-    ///float importe;
 
-    const float precioPorPersonaPorHora= 500.0f;
+    const float precioPorPersonaPorHora= 500;
 
-    cout << "INGRESE ID PARA ESTE ALQUILER DE RANGO 0 A 999: ";
-    cin >> idA;
-    while (idA < 0 || idA > 999)
+
+    while (true)
     {
-        cout << "ID MUY LARGO REINGRESE: ";
-        cin >>idA;
+        cout << "INGRESE ID PARA ESTE ALQUILER (SOLO DIGITOS DE 0 A 999): ";
+        cin >> idA;
+
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "ERROR: SOLO SE ACEPTAN NUMEROS ENTEROS DENTRO DEL RANGO (0 a 999)." << endl;
+            continue;
+        }
+
+
+        if (idA < 0 || idA > 999)
+        {
+            cout << "ID FUERA DE RANGO (SOLO DIGITOS 0 A 999).REINGRESE! " << endl;
+            continue;
+        }
+
+
+        if (pArchivoA.verificarIdAlquiler(idA))
+        {
+            cout << "ERROR: ESE ID YA EXISTE INGRESE OTRO. " << endl;
+            continue;
+        }
+
+
+        cin.ignore(10000, '\n');
+        cout << "ID CARGADO CORRECTAMENTE!" << endl;
+        break;
     }
 
 
-    ///cambie el rango por que no sirve aqui, sirve en la carga de clientes
-     ArchivoClientes archivoC;
-    while(true){
-    cout << "INGRESE DNI DEL CLIENTE: ";
-    cin >> dniC;
+    ArchivoClientes archivoC;
+    while(true)
+    {
+        cout << "INGRESE DNI DEL CLIENTE: ";
+        cin >> dniC;
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(10000,'\n');
+            cout << "ERROR: INGRESE SOLO NUMEROS." << endl;
+            continue;
+        }
 
-    if (cin.fail())
-    { cin.clear();
-    cin.ignore(10000,'\n');
 
-       cout << "ERROR: INGRESE SOLO NUMEROS." << endl;
-        continue;
-    }
 
-    if(archivoC.buscarClientePorDni(dniC) != -1)
-    {  cout << "CLIENTE ENCONTRADO Y VALIDADO CORRECTAMENTE!" << endl;
-        break ;  /// DNI valido y registrado
-        }else{cout << "ERROR: DNI NO ENCONTRADO.DEBE SER UN CLIENTE YA REGISTRADO." << endl;
-    }
-
+        if(archivoC.buscarClientePorDni(dniC) != -1)
+        {
+            cout << "CLIENTE ENCONTRADO Y VALIDADO CORRECTAMENTE!" << endl;
+            break ;
+        }
+        else
+        {
+            cout << "ERROR: DNI NO ENCONTRADO.DEBE SER UN CLIENTE YA REGISTRADO." << endl;
+        }
     }
 
     cin.ignore();
-    while(true)
-    {
 
-        cout <<"INGRESE NOMBRE DE EVENTO: ";
-        getline(cin,nombreEV);
+         cout <<"INGRESE NOMBRE DE EVENTO: ";
+         getline(cin,nombreEV);
 
-        if (!nombreEV.empty())
+
+
+
+
+    do{
+         cout <<"FECHA DE ESTE EVENTO: "<<endl;
+         fechaEV.cargarFecha();
+         if (pArchivoA.existeFechaReservada(fechaEV))
         {
-            break;  // válido
+         cout <<"ERROR: HAY UN ALQUILER RESERVADO PARA ESA FECHA. INTENTE CON OTRA."<<endl;
         }
-        cout << "ERROR: EL NOMBRE NO PUEDE ESTAR VACIO REINGRESE:" << endl;
-    }
 
-    cout <<"FECHA DE ESTE EVENTO: "<<endl;
-    fechaEV.cargarFecha();
-    cout <<"FECHA ACTUAL DE ESTA CONTRATACION: ";
-    fechaSE.cargarFecha();
+}       while(pArchivoA.existeFechaReservada(fechaEV));
 
 
-    cout <<"INGRESE HORA ACTUAL DE ESTA CONTRATACION (0 A 23): ";
-    cin >> hora;
-    while (hora < 0 || hora > 23)
-    {
-        cout << "HORA INVALIDA REINGRESE 0 A 23: ";
+        cout <<"INGRESE FECHA ACTUAL DE ESTA CONTRATACION: "<<endl;
+        fechaSE.cargarFecha();
+
+        cout <<"INGRESE HORA ACTUAL DE ESTA CONTRATACION (DE 0 A 23 HORAS): ";
+        cin >> hora;
+        while (hora < 0 || hora > 23){
+        cout << "HORA INVALIDA REINGRESE DE 0 A 23: ";
         cin >>hora;
-    }
+}
+        cout <<"INGRESE LA DURACION DE ESTE EVENTO (DE 2 A 12 HORAS): ";
+        cin >> duracion;
 
-
-
-    cout <<"INGRESE LA DURACION DE ESTE EVENTO (en horas): ";
-    cin >> duracion;
-
-    while (duracion < 2 || duracion >10 )
-    {
+        while (duracion < 2 || duracion > 12 ){
         cout << "DURACION RANGO INVALIDO REINGRESE : ";
         cin >>duracion;
-    }
+}
+        cout << "EL PRECIO POR PERSONA ES: $" << precioPorPersonaPorHora << endl;
+        cout <<"INGRESE CANTIDAD DE PERSONAS A ASISTIR DE (100 a 400): ";
+        cin >> cantidad;
 
-    cout << "EL PRECIO POR PERSONA ES: $" << precioPorPersonaPorHora << endl;
-
-
-    cout <<"INGRESE CANTIDAD DE PERSONAS A ASISTIR: ";
-    cin >> cantidad;
-
-    while(cantidad < 100 || cantidad > 500)
-    {
-        cout << " NECESITA INVITADOS PARA EL EVENTO REINGRESE : ";
+        while(cantidad < 100 || cantidad > 400){
+        cout << " RANGO DE INVITADOS INVALIDO REINGRESE DE (100 A 400) : ";
         cin >>cantidad;
-    }
+
+
+
+}
 
     setIdAlquiler(idA);
     setDniCliente(dniC);
@@ -140,16 +169,8 @@ void Alquileres::cargarAlquileres()
     setHoraDeServicioContratado(hora);
     setHoraDeDuracionEvento(duracion);
     setCantidadMaxPersonas(cantidad);
-    ///cout <<"INGRESE IMPORTE TOTAL: ";
-    ///cin >> importe;
 
-
-    ///setImporteTotal(importe); aqui no
-
-    ///setImporteTotal(importe) guarda ese valor en el atributo _importeTotal.
-    ///Luego, para ver o guardar ese valor, usás getImporteTotal().
     calcularImporteTotal();
-
     cout << "IMPORTE TOTAL CALCULADO (calculado como cantidad * horas * 500): $"<<getImporteTotal()<<endl;
 
 
@@ -167,10 +188,11 @@ void Alquileres::cargarAlquileres()
 
 void Alquileres::calcularImporteTotal()
 {
-    const float precioPorPersonaPorHora = 500.0f;
+    const float precioPorPersonaPorHora = 500;
     float importe=_cantidadMaxpersonas * _horaDeDuracionEvento * precioPorPersonaPorHora;
     setImporteTotal(importe);
 }
+
 
 void Alquileres::mostrarCantidadAlquileres()
 {
@@ -182,26 +204,20 @@ void Alquileres::mostrarCantidadAlquileres()
 
 }
 
+
 void Alquileres::listarTodosAlquileres()
 {
-
-
     AlquileresArchivo pArchivoA;
     Alquileres registro;
     int cantidadRegistrosAlquileres = pArchivoA.getCantidadRegistrosAlquileres();
 
     for(int i = 0; i < cantidadRegistrosAlquileres ; i++)
     {
-
         registro = pArchivoA.leerAlquileres(i);
-
         registro.mostrarAlquileres();
         cout << "=======================================================" << endl;
     }
-
-
 }
-
 
 
 
@@ -219,11 +235,14 @@ void Alquileres::mostrarAlquileres()
     cout <<"HORA DE CONTRATACION: "<<_horaDeServicioContratado<<endl;
     cout <<"DURACION DE EVENTO: "<<_horaDeDuracionEvento<<endl;
     cout <<"CANTIDAD DE PERSONAS PARA ESTE EVENTO: "<<_cantidadMaxpersonas<<endl;
-    cout <<"IMPORTE TOTAL: "<<_importeTotal<<endl;
+    cout <<"IMPORTE TOTAL: $"<<_importeTotal<<endl;
     cout << "=======================================================" << endl;
 }
 
-///GET'S ALQUILER
+
+
+
+///GETS ALQUILER
 int Alquileres::getIdAlquiler()
 {
     return _idAlquiler;
@@ -266,9 +285,9 @@ float Alquileres::getImporteTotal()
 }
 ///SET'S ALQUILER
 
-void Alquileres::setIdAlquiler(int idA)  /// valida un rango de 3 digitos
+void Alquileres::setIdAlquiler(int idA)
 {
-    if (idA >= 0 && idA  <= 999)///verifica rango 3
+    if (idA >= 0 && idA  <= 999)
     {
         _idAlquiler = idA;
     }
@@ -278,7 +297,7 @@ void Alquileres::setIdAlquiler(int idA)  /// valida un rango de 3 digitos
 
 void Alquileres::setDniCliente(int dniC)
 {
-        _dniCliente = dniC;
+    _dniCliente = dniC;
 
 
 }
@@ -306,27 +325,27 @@ void Alquileres::setFechaDeServicioContratado(Fecha& fechaSE)
 
 
 
-void Alquileres::setHoraDeServicioContratado(int hora) /// valida que sea de 0 a 23
+void Alquileres::setHoraDeServicioContratado(int hora)
 {
-    if (hora >=0 && hora <= 23)  /// verifica que la hora sea tipo  0 a 23
+    if (hora >=0 && hora <= 23)
     {
         _horaDeServicioContratado = hora;
     }
 
 }
 
-void Alquileres::setHoraDeDuracionEvento(int duracion) ///arreglar de 3 a 6 horas
+void Alquileres::setHoraDeDuracionEvento(int duracion)
 {
-    if (duracion >= 2 && duracion <= 12)  ///verifica que no sea negativo y rango de 2 a 12
+    if (duracion >= 2 && duracion <= 12)
     {
         _horaDeDuracionEvento = duracion;
     }
 
 }
 
-void Alquileres::setCantidadMaxPersonas(int cantidad) ///no puedo pedir 1 invitado , tengo que poner un rango
+void Alquileres::setCantidadMaxPersonas(int cantidad)
 {
-    if (cantidad >= 100 && cantidad <= 500)  ///verifica que se ingresen eventos sin personas
+    if (cantidad >= 100 && cantidad <= 400)
     {
         _cantidadMaxpersonas = cantidad;
     }
@@ -335,7 +354,7 @@ void Alquileres::setCantidadMaxPersonas(int cantidad) ///no puedo pedir 1 invita
 
 void Alquileres::setImporteTotal(float importe)
 {
-    if(importe >= 0) ///verifica si es valor negativo
+    if(importe >= 0)
     {
         _importeTotal = importe;
     }

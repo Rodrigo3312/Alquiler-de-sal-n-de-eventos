@@ -5,122 +5,155 @@
 
 using namespace std;
 
-bool validarPalabraNombre=false;
-
-void validarPalabra(char datoChar[], int tamanio){
-
-    int contadorErrores=0;
-    int numero = 0;
-    for(int i=0; i < tamanio; i++){
-        if(datoChar[i]== numero){
-        contadorErrores++;
-        }
-        numero++;
-    }
-    if(contadorErrores > 0){
-        cout << "ERROR. Debe ingresar solo letras. Usted ingreso " <<contadorErrores << "numeros."<<endl;
-        validarPalabraNombre = false;
-    }else if(contadorErrores == 0){
-    validarPalabraNombre = true;
-    }
-
-
-}
 
 void Clientes::cargarClientes()
-{
-    int dni;
-
-
-
-while (true){
-          cout << "Ingrese DNI CLIENTES: ";
+{   int dni;
+    while (true) {
+    cout << "INGRESE DNI DEL CLIENTE (7 a 8 digitos): ";
     cin >> dni;
 
-
-       /// Validar rango de 7 a 8 dígitos antes de setDni
-    if (dni < 1000000 || dni > 99999999)
-    {
-        cout << "ERROR: DNI FUERA DE RANGO (debe tener entre 7 y 8 digitos)." << endl;
-        continue; /// vuelve a pedir el DNI
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "ERROR: DEBE INGRESAR SOLO NUMEROS." << endl;
+        continue;
     }
 
+    if (dni < 1000000 || dni > 99999999) {
+        cout << "ERROR: DNI FUERA DE RANGO." << endl;
+        continue;
+    }
 
     if(setDni(dni) == false){
         cout << "ESTE DNI YA ESTA REGISTRADO"<<endl;
-        continue;
+          continue;
     }
-break;    /// Si pasa ambas validaciones, salgo del bucle
+
+    break;
 }
 
+    cin.ignore();
+
+      cout << "INGRESE NOMBRE: ";
+    cin.getline(nombre, 30);
+
+      cout << "INGRESE APELLIDO: ";
+      cin.getline(apellido, 30);
 
 
 
-
-
-
-    while(validarPalabraNombre == false){//sacar validar palabra y numeros
-    cout << "Ingrese NOMBRE: ";
-    cin >> nombre;
-    validarPalabra(nombre,30);
-    }
-
-
-    cout << "Ingrese APELLIDO: ";
-    cin >> apellido;
-
-    cout << "Ingrese TELEFONO: ";
+   while (true) {
+    cout << "INGRESE TELEFONO (7 a 10 digitos): ";
     cin >> telefono;
 
-    cout << "Ingrese EMAIL: ";
-    cin >> email;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "ERROR: SOLO SE PERMITEN NUMEROS." << endl;
+        continue;
+    }
 
-    cout << "Ingrese FECHA DE NACIMIENTO: ";
-    fechaDeNacimiento.cargarFecha();
+    if (telefono < 1000000 || telefono > 9999999999) {
+        cout << "ERROR: TELEFONO FUERA DE RANGO." << endl;
+        continue;
+    }
 
-    //cout << "Eliminado - esto no se muestra"<<endl;
-
+    break;
 }
+    cin.ignore();
 
-void Clientes::mostrarClientes(){
+while (true) {
+    cout << "INGRESE EMAIL: ";
+    cin.getline(email, 50);
 
-cout << "--CLIENTES REGISTRADOS--"<<endl;
-
-cout << "DNI CLIENTE: "<<dniCliente<<endl;
-cout << "NOMBRE: " <<nombre<<endl;
-cout << "APELLIDO: " <<apellido<<endl;
-cout << "TELEFONO: "<<telefono<<endl;
-cout << "EMAIL: " <<email<<endl;
-cout << "FECHA DE NACIMIENTO: " <<endl; fechaDeNacimiento.mostrarFecha();
-
-}
-
-bool Clientes::setDni(int _dni){
-{  ///agrugue validacion de rango
-    if(_dni < 1000000|| _dni > 999999999){
-        cout << "ERROR:DNI FUERA DE RANGO (debe tener 7 u 8 digitos)."<<endl;
-        return false;
+    if (strchr(email, '@') && strchr(email, '.')) {
+        break;
+    } else {
+        cout << "ERROR: EMAIL INVALIDO DEBE TENER '@' y '.'" << endl;
     }
 }
+
+    cout << "INGRESE FECHA DE NACIMIENTO: ";
+    fechaDeNacimiento.cargarFecha();
+
+
+
+}
+
+
+
+
+
+
+
+
+void Clientes::mostrarClientes()
+{
+
+    cout << "--CLIENTES REGISTRADOS--"<<endl;
+
+    cout << "DNI CLIENTE: "<<dniCliente<<endl;
+    cout << "NOMBRE: " <<nombre<<endl;
+    cout << "APELLIDO: " <<apellido<<endl;
+    cout << "TELEFONO: "<<telefono<<endl;
+    cout << "EMAIL: " <<email<<endl;
+    cout << "FECHA DE NACIMIENTO: " <<endl;
+    fechaDeNacimiento.mostrarFecha();
+
+}
+
+
+bool Clientes::setDni(int _dni){
+
     ArchivoClientes obj;
 
     if(obj.verificarDni(_dni) == true){
         dniCliente = _dni;
         return true;
-    }else{ ///agregue este cout
-        cout << "ERROR: ESTE DNI YA ESTA REGISTRADO."<<endl;
-
+    }else{
     return false;
     }
 
 }
 
-int Clientes::getDniCliente(){
+void Clientes::setNombre(const char *_nombre)
+{
+    strcpy(nombre, _nombre);
+}
 
-return dniCliente;
+void Clientes::setApellido(const char *_apellido)
+{
+    strcpy(apellido, _apellido);
+}
 
+void Clientes::setEmail(const char *_email)
+{
+    strcpy(email, _email);
+}
+
+bool Clientes::setTelefono(int _telefono)
+{
+    return telefono;
 }
 
 
+int Clientes::getDniCliente()
+{
+    return dniCliente;
+}
 
+const char* Clientes::getNombre() {
+    return nombre;
+}
 
+const char* Clientes::getApellido() {
+    return apellido;
+}
+
+int Clientes::getTelefono() {
+    return telefono;
+}
+
+const char* Clientes::getEmail() {
+    return email;
+}

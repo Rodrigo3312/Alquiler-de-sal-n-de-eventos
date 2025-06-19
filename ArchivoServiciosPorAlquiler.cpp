@@ -1,20 +1,53 @@
 #include <iostream>
 using namespace std;
+#include "Alquileres.h"
+#include "AlquileresArchivo.h"
 #include "ArchivoServiciosPorAlquiler.h"
+#include "ServicioArchivo.h"
 #include "ServiciosPoralquiler.h"
+
 
 int ArchivoServiciosPorAlquiler::agregarServicioPorAlquiler(){
     ServiciosPorAlquiler obj;
     obj.cargarRelacion();
+
+      int idAlq = obj.getIdServicio();
+    int idServ = obj.getIdAlquiler();
+
+
+
+    ServiciosArchivo archivoServi;
+    AlquileresArchivo archiAlqui;
+
+    if (!archivoServi.verificarIdServicio(idServ)){
+
+        cout << "ERROR : NO EXISTE EL ID DEL SERVICIO" << endl;
+        return -1;
+    }
+    if (!archiAlqui.verificarIdAlquiler(idAlq)){
+
+        cout << "ERROR : NO EXISTE EL ID DEL ALQUILER" <<endl;
+        return -1;
+    }
+
+  ///guarda si ambos existen
     FILE *pArchivo;
-    pArchivo= fopen(nombreArchivo, "wb");
+    pArchivo= fopen(nombreArchivo, "ab");
+
     if(pArchivo==nullptr){
         return -1;
     }
+
+
     int escribio=fwrite(&obj, sizeof(ServiciosPorAlquiler), 1, pArchivo);
     fclose(pArchivo);
+
+    float precio=archivoServi.obtenerPrecioServicio(idServ);
+    archiAlqui.sumarImporteAlquiler(idAlq,precio);
+
     return escribio;
 }
+
 
 bool ArchivoServiciosPorAlquiler::listarServiciosPorAlquileres(){
 
@@ -44,3 +77,6 @@ int ArchivoServiciosPorAlquiler::contarRegistrosServiciosPorAlquiler(){
     fclose(pArchivo);
     return cantidadS;
 }
+
+
+

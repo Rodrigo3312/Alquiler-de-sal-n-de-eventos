@@ -4,7 +4,6 @@
 #include "Alquileres.h"
 #include "Fecha.h"
 #include "ServiciosPoralquiler.h"
-
 #include "ArchivoServiciosPorAlquiler.h"
 #include "ArchivoClientes.h"
 
@@ -18,6 +17,7 @@ int main()
     Clientes obj;
     Servicios miServicio;
     Alquileres misAlquileres;
+
     ArchivoServiciosPorAlquiler servixal;
     ArchivoClientes archivo;
     do

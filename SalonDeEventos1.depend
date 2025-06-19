@@ -145,7 +145,7 @@
 	"Servicio.h"
 	"ServicioArchivo.h"
 
-1750363321 source:c:\users\rodrigo\desktop\salondeeventos2\serviciosporalquiler.cpp
+1750364945 source:c:\users\rodrigo\desktop\salondeeventos2\serviciosporalquiler.cpp
 	<iostream>
 	"Fecha.h"
 	"Alquileres.h"
@@ -162,7 +162,7 @@
 	<cstring>
 	"ArchivoClientes.h"
 
-1750362113 source:c:\users\rodrigo\desktop\salondeeventos2\servicioarchivo.cpp
+1750366045 source:c:\users\rodrigo\desktop\salondeeventos2\servicioarchivo.cpp
 	"ServicioArchivo.h"
 	"Servicio.h"
 	<cstdio>
@@ -174,12 +174,12 @@
 
 1750360486 c:\users\rodrigo\desktop\salondeeventos2\alquileresarchivo.h
 
-1750362292 source:c:\users\rodrigo\desktop\salondeeventos2\alquileresarchivo.cpp
+1750365718 source:c:\users\rodrigo\desktop\salondeeventos2\alquileresarchivo.cpp
 	<iostream>
 	"Alquileres.h"
 	"AlquileresArchivo.h"
 
-1750358355 source:c:\users\rodrigo\desktop\salondeeventos2\archivoclientes.cpp
+1750365718 source:c:\users\rodrigo\desktop\salondeeventos2\archivoclientes.cpp
 	<iostream>
 	"ArchivoClientes.h"
 
@@ -187,7 +187,7 @@
 	"Clientes.h"
 	<cstring>
 
-1750363300 source:c:\users\rodrigo\desktop\salondeeventos2\archivoserviciosporalquiler.cpp
+1750365718 source:c:\users\rodrigo\desktop\salondeeventos2\archivoserviciosporalquiler.cpp
 	<iostream>
 	"Alquileres.h"
 	"AlquileresArchivo.h"

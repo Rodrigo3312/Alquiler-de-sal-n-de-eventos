@@ -7,34 +7,39 @@ using namespace std;
 #include "ServiciosPoralquiler.h"
 
 
-int ArchivoServiciosPorAlquiler::agregarServicioPorAlquiler(){
+int ArchivoServiciosPorAlquiler::agregarServicioPorAlquiler()
+{
     ServiciosPorAlquiler obj;
     obj.cargarRelacion();
 
-      int idAlq = obj.getIdServicio();
     int idServ = obj.getIdAlquiler();
+    int idAlq = obj.getIdServicio();
 
 
 
+ AlquileresArchivo archiAlqui;
     ServiciosArchivo archivoServi;
-    AlquileresArchivo archiAlqui;
 
-    if (!archivoServi.verificarIdServicio(idServ)){
+
+    if (!archivoServi.verificarIdServicio(idServ))
+    {
 
         cout << "ERROR : NO EXISTE EL ID DEL SERVICIO" << endl;
         return -1;
     }
-    if (!archiAlqui.verificarIdAlquiler(idAlq)){
+    if (!archiAlqui.verificarIdAlquiler(idAlq))
+    {
 
         cout << "ERROR : NO EXISTE EL ID DEL ALQUILER" <<endl;
         return -1;
     }
 
-  ///guarda si ambos existen
+    ///guarda si ambos existen
     FILE *pArchivo;
     pArchivo= fopen(nombreArchivo, "ab");
 
-    if(pArchivo==nullptr){
+    if(pArchivo==nullptr)
+    {
         return -1;
     }
 
@@ -49,15 +54,18 @@ int ArchivoServiciosPorAlquiler::agregarServicioPorAlquiler(){
 }
 
 
-bool ArchivoServiciosPorAlquiler::listarServiciosPorAlquileres(){
+bool ArchivoServiciosPorAlquiler::listarServiciosPorAlquileres()
+{
 
     ServiciosPorAlquiler obj;
     FILE *pArchivo;
     pArchivo = fopen(nombreArchivo, "rb");
-    if(pArchivo==nullptr){
-            return -1;
+    if(pArchivo==nullptr)
+    {
+        return -1;
     }
-    while(fread(&obj, sizeof(obj),1,pArchivo)==1){
+    while(fread(&obj, sizeof(obj),1,pArchivo)==1)
+    {
         obj.mostrar();
         std::cout<<std::endl;
     }
@@ -67,9 +75,11 @@ bool ArchivoServiciosPorAlquiler::listarServiciosPorAlquileres(){
 }
 
 
-int ArchivoServiciosPorAlquiler::contarRegistrosServiciosPorAlquiler(){
+int ArchivoServiciosPorAlquiler::contarRegistrosServiciosPorAlquiler()
+{
     FILE *pArchivo=fopen(nombreArchivo, "rb");
-    if(pArchivo == nullptr){
+    if(pArchivo == nullptr)
+    {
         return -1;
     }
     fseek(pArchivo, 0, SEEK_END);

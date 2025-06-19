@@ -9,14 +9,16 @@
 using namespace std;
 
 ServiciosPorAlquiler::ServiciosPorAlquiler(){
+  _idAlquiler = 0;
  _idServicio = 0;
-    _idAlquiler = 0;
+
     _precioDeServicio = 0;
 }
 
-ServiciosPorAlquiler::ServiciosPorAlquiler(int idServicio, int idAlquiler, float precioDeServicios) {
-    setIdServicio (idServicio);
+ServiciosPorAlquiler::ServiciosPorAlquiler( int idAlquiler,int idServicio, float precioDeServicios) {
+
     setIdAlquiler (idAlquiler);
+     setIdServicio (idServicio);
     setPrecioDeServicios(precioDeServicios);
 }
 
@@ -26,10 +28,10 @@ void ServiciosPorAlquiler::cargarRelacion(){
 
     cout << "===== ASIGNAR SERVICIO A UN ALQUILER ======" << endl;
 
-    cout << "INGRESE ID DEL ALQUILER: ";
+     cout << "INGRESE ID DEL SERVICIO: ";
     cin >> _idAlquiler;
 
-    cout << "INGRESE ID DEL SERVICIO: ";
+      cout << "INGRESE ID DEL ALQUILER: ";
     cin >> _idServicio;
 
     cout << "INGRESE PRECIO DEL SERVICIO: ";
@@ -49,13 +51,15 @@ void ServiciosPorAlquiler::mostrar(){
 
 
 
+int ServiciosPorAlquiler::getIdAlquiler(){
+    return _idAlquiler;
+   }
+
 int ServiciosPorAlquiler::getIdServicio(){
     return _idServicio;
 }
 
-int ServiciosPorAlquiler::getIdAlquiler(){
-    return _idAlquiler;
-}
+
 
 float ServiciosPorAlquiler::getPrecioDeServicio(){
     return _precioDeServicio;

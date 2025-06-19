@@ -20,7 +20,7 @@ bool AlquileresArchivo::guardarA(Alquileres registroA)
 
     FILE *pAlqui;
     bool result;
-    pAlqui = fopen (_nombreArchivoAlquiler.c_str(), "wb");
+    pAlqui = fopen (_nombreArchivoAlquiler.c_str(), "ab");
     if (pAlqui==nullptr)
     {
         return false;
